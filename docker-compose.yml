@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "todo_development"
+      DEBUG: "true"
+
+  web:
+    build: .
+    command: /bin/sh -c "rm -f /rails/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RACK_ENV: "development"
+      RAILS_ENV: "development"
+      DB_USERNAME: "postgres"
+      DB_PASSWORD: "password"
+      DEBUG: "true"
+
