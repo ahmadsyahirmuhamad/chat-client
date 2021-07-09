@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 1.0.0', group: :doc
 gem 'activeadmin'
 gem 'devise'
 gem 'bcrypt'
